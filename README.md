@@ -6,7 +6,9 @@
  
  I am happy for others to use it as long as you contact me: http://www.jackofallorgans.com/contact/
  
- It runs stand alone, no dependencies, and is vanilla javascript. Simply enter the weight and choose the drug
+ It runs stand alone, no dependencies, and is vanilla javascript. 
+ 
+ User story: Simply enter the weight, choose the drug and receive the dose in mLs and mgs with relevant information
  
  It doesn't work on old internet explorer version (10 and below)
 
@@ -21,6 +23,6 @@ Written by [Dr. Jeremy Steinberg, General Practitioner](http://www.jackofallorga
 
 ## References
 
-NZ Formulary
+http://nzformulary.org/
 
-Up to Date
+www.uptodate.com
