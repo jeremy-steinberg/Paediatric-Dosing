@@ -1,0 +1,141 @@
+/* The whole box*/
+#wraptitle {
+  background:#a8d17e;
+  padding-top: 10px;
+  padding-bottom:0px;
+  margin: -10px;
+  margin-bottom: 25px;
+  opacity: 0.8;
+
+}
+
+#pregicon {
+  height: 68px;
+}
+
+#calc_source{
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px!important;
+}
+
+#wrap {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 0;
+  padding: 10px;
+   background: url("http://www.jackofallorgans.com/wp-content/uploads/2017/12/background-2.jpg") no-repeat top; 
+  font-size: 14px;
+  line-height: 16px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width:2px;
+}
+
+/* Title*/
+#wrap legend, #wrap #title {
+ margin:10px;
+ margin-bottom:0px;
+  margin-top:-10px;
+ font-size:28px;
+ color:black;
+ font-weight:bold;
+ font-style:italic;
+ padding-bottom:0px;
+ padding-top:20px;
+line-height: 1.5;
+  transform: translateY(-30%);
+}
+
+/* Label text i.e for weight and choose drug*/
+#wrap label {
+  display: block;
+  font-size: 20px;
+  color: #303030;
+  font-weight: bold;
+  margin: 10px;
+}
+
+/* Don't know what this does*/
+#wrap .inlinelabel {
+  display: inline;
+}
+#wrap .drug_calc input {
+  margin-bottom: 5px;
+}
+#wrap .drug_calc p {
+  padding-top: 5px;
+}
+
+/* Color when highliting the weight field*/
+#wrap input[type="text"]:hover, #wrap input[type="text"]:active {
+  background-color: #b3daff;
+}
+
+#theweight, #drug {
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 10px;
+  color: black!important;
+}
+
+#drug {
+  width: 80%;
+}
+
+#theweight {
+  width: 30%;
+}
+
+/* The dose result*/
+#wrap div#Result, #ResultMgs {
+  margin: 20px;
+  padding: 20px;
+  font-weight: bold;
+  background-color: #a8d17e;
+  color: black;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 1px;
+  opacity: 0.9;
+}
+
+/* Calculate button*/
+#calcbutton {
+  margin-bottom: 20px;
+  margin-top: 5px;
+  color: black;
+  background-color: #a8d17e;
+  padding: 10px;
+  font-weight: bold;
+  border-style: solid;
+  border-color: black;
+   border-radius: 3px;
+  border-width: 1px;
+}
+
+#calcbutton:hover {
+  background-color: #DBFFB1;
+  color: black;
+  cursor: pointer;
+}
+
+#drug:focus, #theweight:focus, #drug:hover, #theweight:hover {
+  background-color: #FFFFE4;
+}
+
+#calcbutton:focus {
+  background-color: #DBFFB1;
+}
+
+#calcbutton:active {
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+}

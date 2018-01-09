@@ -1,0 +1,61 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="src/dosingstyle.css">
+</head>
+<body onload='hideTotal(), hideTotalMgs()'>
+  <div id="wrap">
+     <div id="wraptitle"><img id="pregicon" src="http://www.jackofallorgans.com/wp-content/uploads/2017/12/Syrup.png"></img><p id="title"><p id="title">Paediatric Dose Calculator</p></div>
+    <form action="" id="drugform" onsubmit="return false;">
+      <div class="drug_calc">
+
+
+
+        <label>Weight (kg)</label>
+        <input type="number" id="theweight" min="1" max="100" name="theweight" value="" />
+
+        <br><br>
+        <label>Choose Drug</label>
+
+        <select id="drug" name='drug' onchange="calculateTotalMls(); calculateMgsTotal()">
+ <option value="None">Select Drug</option>
+ <option value="Paracetamol120">Paracetamol 120mg/5mL(15mg/kg)</option>
+ <option value="Paracetamol250">Paracetamol 250mg/5mL (15mg/kg)</option>
+ <option value="Ibuprofen100">Ibuprofen 100mg/5mL (5-10mg/kg)</option>
+ <option value="Amoxicillin125">Amoxicillin 125mg/5mL (15-30mg/kg)</option>
+ <option value="Amoxicillin250">Amoxicillin 250mg/5mL (15-30mg/kg)</option>
+ <option value="Cefaclor125">Cefaclor 125mg/5mL (10mg/kg)</option>
+ <option value="Cefalexin125">Cefalexin 125mg/5mL (12.5mg/kg)</option>
+ <option value="Cefalexin250">Cefalexin 250mg/5mL (12.5mg/kg)</option>
+ <option value="Coamoxiclav125-31.25">Coamoxiclav 125-31.25mg/5mL (15mg/kg)</option>
+ <option value="Coamoxiclav250-62.5">Coamoxiclav 250-62.5mg/5mL (15mg/kg)</option>
+ <option value="Cotrimoxazole480">Cotrimoxazole 240mg/5mL (24mg/kg)</option>
+ <option value="Erythromycin200">Erythromycin 200mg/5mL (10mg/kg)</option>
+ <option value="Erythromycin400">Erythromycin 400mg/5mL (10mg/kg)</option>
+ <option value="Flucloxacillin125">Flucloxacillin 125mg/5mL (12.5mg/kg)</option>
+ <option value="Flucloxacillin250">Flucloxacillin 250mg/5mL (12.5mg/kg)</option>
+ <option value="Lactulose">Lactulose (0.5mL/kg)</option>
+ <option value="Loratadine">Loratadine 1mg/1mL</option>
+ <option value="Macrogol">Macrogol 13.12g/sachet (0.5-1.5g/kg)</option>
+ <option value="Phenoxymethylpenicillin">Phenoxymethylpenicillin 250mg/5mL </option>
+ <option value="Prednisolone">Prednisolone 5mg/1mL (1-2mg/kg)</option>
+
+ </select>
+        <br/>
+
+        <br><br>
+        <INPUT TYPE="button" id="calcbutton" NAME="DoIt" VALUE=" Calculate " OnClick="calculateTotalMls(); calculateMgsTotal()">
+        <div id="Result" class="resultBox" style="display:none"></div>
+        <div id="ResultMgs" class="resultBox" style="display:none"></div>
+
+      </div>       <!--End of drug_calc-->
+    </form>
+  </div>   <!--End of wrap-->
+    <div id="calc_source">
+      <p>Calculator written by Jeremy Steinberg, <a href="https://www.jackofallorgans.com/contact" target="_blank">contact</a> for suggestions</p>
+    </div>
+
+<script src="src/dosing.js"></script>
+
+</body>
+
+</html>
