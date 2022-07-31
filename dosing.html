@@ -1,61 +1,156 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="src/dosingstyle.css">
-</head>
-<body onload='hideTotal(), hideTotalMgs()'>
-  <div id="wrap">
-     <div id="wraptitle"><img id="pregicon" src="http://www.jackofallorgans.com/wp-content/uploads/2017/12/Syrup.png"></img><p id="title"><p id="title">Paediatric Dose Calculator</p></div>
-    <form action="" id="drugform" onsubmit="return false;">
-      <div class="drug_calc">
+<html><head>
+  <LINK href="./src/calculator-style.css" rel="stylesheet" type="text/css"> 
+    <script src="./src/drug-calculator.js"></script>
+ <script src="./src/drugs.js"></script>
+    <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@4"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+    </head>
 
+<body>
 
-        <label>Weight (kg)</label>
-        <input type="number" id="theweight" min="1" max="100" name="theweight" value="" />
+  <div id="calculator">
 
-        <br><br>
-        <label>Choose Drug</label>
-
-        <select id="drug" name='drug' onchange="calculateTotalMls(); calculateMgsTotal()">
- <option value="None">Select Drug</option>
- <option value="Paracetamol120">Paracetamol 120mg/5mL(15mg/kg)</option>
- <option value="Paracetamol250">Paracetamol 250mg/5mL (15mg/kg)</option>
- <option value="Ibuprofen100">Ibuprofen 100mg/5mL (5-10mg/kg)</option>
- <option value="Amoxicillin125">Amoxicillin 125mg/5mL (15-30mg/kg)</option>
- <option value="Amoxicillin250">Amoxicillin 250mg/5mL (15-30mg/kg)</option>
- <option value="Cefaclor125">Cefaclor 125mg/5mL (10mg/kg)</option>
- <option value="Cefalexin125">Cefalexin 125mg/5mL (12.5mg/kg)</option>
- <option value="Cefalexin250">Cefalexin 250mg/5mL (12.5mg/kg)</option>
- <option value="Coamoxiclav125-31.25">Coamoxiclav 125-31.25mg/5mL (15mg/kg)</option>
- <option value="Coamoxiclav250-62.5">Coamoxiclav 250-62.5mg/5mL (15mg/kg)</option>
- <option value="Cotrimoxazole480">Cotrimoxazole 240mg/5mL (24mg/kg)</option>
- <option value="Erythromycin200">Erythromycin 200mg/5mL (10mg/kg)</option>
- <option value="Erythromycin400">Erythromycin 400mg/5mL (10mg/kg)</option>
- <option value="Flucloxacillin125">Flucloxacillin 125mg/5mL (12.5mg/kg)</option>
- <option value="Flucloxacillin250">Flucloxacillin 250mg/5mL (12.5mg/kg)</option>
- <option value="Lactulose">Lactulose (0.5mL/kg)</option>
- <option value="Loratadine">Loratadine 1mg/1mL</option>
- <option value="Macrogol">Macrogol 13.12g/sachet (0.5-1.5g/kg)</option>
- <option value="Phenoxymethylpenicillin">Phenoxymethylpenicillin 250mg/5mL </option>
- <option value="Prednisolone">Prednisolone 5mg/1mL (1-2mg/kg)</option>
-
- </select>
-        <br/>
-
-        <br><br>
-        <INPUT TYPE="button" id="calcbutton" NAME="DoIt" VALUE=" Calculate " OnClick="calculateTotalMls(); calculateMgsTotal()">
-        <div id="Result" class="resultBox" style="display:none"></div>
-        <div id="ResultMgs" class="resultBox" style="display:none"></div>
-
-      </div>       <!--End of drug_calc-->
-    </form>
-  </div>   <!--End of wrap-->
-    <div id="calc_source">
-      <p>Calculator written by Jeremy Steinberg, <a href="https://www.jackofallorgans.com/contact" target="_blank">contact</a> for suggestions</p>
+    <div class="title__section">
+      <div class="title__section__image title__section-item"><img id="calcicon" src="https://www.jackofallorgans.com/wp-content/uploads/2017/12/SyrupBottle2.png"></img>
+      </div>
+      <div class="title__section-label title__section-item">Paediatric Dose Calculator</div>
     </div>
 
-<script src="src/dosing.js"></script>
+    <div class="drug_calc">
+      <form action="" id="drugform" onsubmit="return false;">
+
+        <div class="error__section" id="warning-message"></div>
+        <div class="error__section" id="error-message"></div>
+
+        <div class="weight__section">
+
+          <div class="weight__section-item weight__section-label">Weight (kg)</div>
+          <input class="weight__section-item weight__section-input" id="theweight" min="1" max="100" type="number" onclick="clearResults()" onselect="clearResults()"></input>
+
+        </div>
+
+        <div class="drug__section">
+
+          <select id="drug" name='drug' onchange="validate()">
+ <option value="None">Select Drug</option>   
+ <optgroup label="Analgesics">
+   <option value="Paracetamol120">Paracetamol 120mg/5mL (15mg/kg)</option>
+   <option value="Paracetamol250">Paracetamol 250mg/5mL (15mg/kg)</option>
+   <option value="Ibuprofen100">Ibuprofen 100mg/5mL (5-10mg/kg)</option>
+ </optgroup>
+ <optgroup label="Antibiotics">
+   <option value="Amoxicillin125">Amoxicillin 125mg/5mL (15-30mg/kg)</option>
+   <option value="Amoxicillin250">Amoxicillin 250mg/5mL (15-30mg/kg)</option>
+   <option value="Cefaclor125">Cefaclor 125mg/5mL (10mg/kg)</option>
+   <option value="Cefalexin125">Cefalexin 125mg/5mL (12.5mg/kg)</option>
+   <option value="Cefalexin250">Cefalexin 250mg/5mL (12.5mg/kg)</option>
+   <option value="Coamoxiclav125-31.25">Coamoxiclav 125-31.25mg/5mL (15mg/kg)</option>
+   <option value="Coamoxiclav250-62.5">Coamoxiclav 250-62.5mg/5mL (15mg/kg)</option>
+   <option value="Cotrimoxazole480">Cotrimoxazole 240mg/5mL (24mg/kg)</option>
+   <option value="Erythromycin200">Erythromycin 200mg/5mL (10-12.5mg/kg)</option>
+   <option value="Erythromycin400">Erythromycin 400mg/5mL (10-12.5mg/kg)</option>
+   <option value="Flucloxacillin125">Flucloxacillin 125mg/5mL (12.5mg/kg)</option>
+   <option value="Flucloxacillin250">Flucloxacillin 250mg/5mL (12.5mg/kg)</option>
+   <option value="Penicillin125">Phenoxymethylpenicillin 125mg/5mL (6.25-12.5mg/kg)</option>
+   <option value="Penicillin250">Phenoxymethylpenicillin 250mg/5mL (6.25-12.5mg/kg)</option>
+   <option value="Roxithromycin">Roxithromycin 50mg tablets (weight based)</option>
+ </optgroup>
+ <optgroup label="Other">
+   <option value="Lactulose">Lactulose (0.5mL/kg)</option>
+   <option value="Loratadine">Loratadine 1mg/1mL (age/weight based)</option>
+   <option value="Macrogol">Macrogol 13.12g/sachet (0.5-1.5g/kg)</option>
+   <option value="Prednisolone">Prednisolone 5mg/1mL (1-2mg/kg)</option>
+ </optgroup>
+
+
+ </select>
+
+        </div>
+
+        <div class="calculate__section">
+          <INPUT TYPE="button" id="calcbutton" NAME="DoIt" VALUE=" Calculate " OnClick="validate()">
+        </div>
+
+        <div class="result__section">
+          <div class="result__section-mls">
+            <div class="result__section-mls-item result__section-mls-label">Dose <br> in millilitres</div>
+            <div class="result__section-mls-item result__section-mls-result" id="Result" style="display:block"></div>
+            <button class="result__section-mls-item clipboard btn tippy copy" data-tippy-content="Copied to Clipboard" title="Copy to Clipboard" onclick="copyToClipboard('Result')" ><i class="far fa-clipboard"></i></button>
+          </div>
+          <div class="result__section-mgs">
+            <div class="result__section-mgs-item result__section-mgs-label">Dose <br> in milligrams</div>
+            <div class="result__section-mgs-item result__section-mgs-result" id="ResultMgs" style="display:block"></div>
+           <button class="result__section-mgs-item clipboard btn tippy copy" data-tippy-content="Copied to Clipboard" title="Copy to Clipboard" onclick="copyToClipboard('ResultMgs')"><i class="far fa-clipboard"></i></button>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="message__section-dosing" id="dosing-section" style="display:none">
+      <div class="message__section-dosing-item message__section-dosing-label" id="instructions">
+
+      </div>
+    </div>
+
+    <div class="calculator__footer">
+
+      <div class="calculator__footer-item calculator__footer-information">Further Information:</div>
+
+      
+      <div class="tippy" data-tippy="NZ Formulary">
+        <a class="calculator__footer-item" href="https://nzfchildren.org.nz" target="_blank" id="nzflink">
+<img border="0" alt="nzf" src="https://www.jackofallorgans.com/wp-content/uploads/2018/11/nzf.png" width="32" height="32">
+            </a>
+      </div>
+
+      <div class="tippy" data-tippy="BPAC Antibiotic Guide">
+        <a class="calculator__footer-item" href="https://bpac.org.nz/antibiotics/guide.aspx" target="_blank">
+<img border="0" alt="nzf" src="https://www.jackofallorgans.com/wp-content/uploads/2018/11/bpac-1.png" width="32" height="32">
+</a>
+      </div>
+      
+            <div class="tippy" data-tippy="Antimicrobial Susceptibility Report for 2017">
+        <a class="calculator__footer-item" href="https://www.jackofallorgans.com/wp-content/uploads/AST-2017-Table-1.pdf" target="_blank">
+<img border="0" alt="nzf" src="https://www.jackofallorgans.com/wp-content/uploads/labtest-logo.png" width="32" height="32">
+</a>
+      </div>
+
+    </div>
+
+    <!--End of drug_calc-->
+    </form>
+
+    <div class="calculator__author">
+
+      <div class="calculator__author-item calculator__author-information">Calculator written by Dr Jeremy Steinberg, GP. <a href="https://www.jackofallorgans.com/contact" target="_blank">Contact</a> for suggestions</div>
+
+    </div>
+  </div>
 
 </body>
 
+
 </html>
+<script>//This is a paediatric dosing calculator, written by Dr. Jeremy Steinberg
+  //Contact me for any queries, http://www.jackofallorgans.com/contact/
+  //I am happy to allow re-use of the code for non-commercial organisations, but please contact me first.
+  
+  /*set up whether this is a single drug calculator or a multi drug calculator, 
+  and whether the strep dosing will automatically show up,
+  the indication can be multi (will display both general and strep dosing), general (general only)or strep (strep only).
+  radiodosing means whether there are two strengths selectable for a single drug calculator.
+  age input means whether age is an input or not.
+  */
+  var singleDrugCalculator = false;
+  var radioDosing = false;
+  var showStrep = true;
+  var theIndication = "multi";
+  var ageInput = false;
+  
+  tippy('.copy', {
+    trigger: 'click', // or 'focus'
+  })
+  
+  </script>
