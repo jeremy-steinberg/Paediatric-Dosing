@@ -514,5 +514,26 @@ let drug_options = {
     instructions:
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>under 40 kg</span> 2.5-4 mg/kg (maximum 150 mg) twice daily <br><span class='age-group'>over 40 kg</span> 150 mg twice daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>under 40 kg</span> 2.5 mg/kg twice daily for 10 days<br> <span class='age-group'> over 40 kg </span> 150 mg twice daily for 10 days<br></div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3161"
+  },
+  Ferrous_sulphate: {
+    tabletOnly: false,
+    mlsvar: 0.25,
+    mgsvar: 1.5,
+    numberOfTimesADay: " twice a day",
+    mlsmax: 7.5,
+    mgsmax: 45,
+    mlsmaxhigh: 15,
+    mgsmaxhigh: 90,
+    highrange: true,
+    highmodifier: 2,
+    messageshow: true,
+    messageMls:
+      "",
+    messageMgs:
+      " of equivalent elemental iron",
+    instructions:
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>Child 1 month - 12 years</span> 0.5-1 mL/kg daily up to maximum 30 mL daily in 2-3 divided doses <br><span class='age-group'>Child 12 - 18 years</span> 15-30 mL daily in 1-2 divided doses</div></div>",
+    nzflink: "https://nzfchildren.org.nz/nzf_4915"
   }
+
 };
