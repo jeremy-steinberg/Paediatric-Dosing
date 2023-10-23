@@ -141,7 +141,7 @@ function getLoading(unit){
 
 //get strep A dosing information
 function getStrep(unit){
-    unit = unit == "mls" ? "mLs" : "mgs";
+    unit = unit == "mLs" ? "mLs" : "mgs";
     let theDrug = getDrug();
     let weight = getWeight();
     if (drug_options[theDrug].strepdrug == true){
@@ -208,6 +208,21 @@ function getStrep(unit){
     return null;
   }
   
+}
+
+function getIron(unit){
+  unit = unit == "mLs" ? "mLs" : "mgs";
+  let theDrug = getDrug();
+  let theWeight = getWeight();
+  if (theWeight < 11){
+    if (theDrug == "Ferrous_sulphate"){
+      let dose = unit == "mLs" ? parseFloat((drug_options[theDrug].mlsvarprophylaxis * theWeight).toFixed(1)) : parseFloat((drug_options[theDrug].mgsvarprophylaxis * theWeight).toFixed(1));
+      let dose2 = unit == "mLs" ? parseFloat((drug_options[theDrug].mlsvar * theWeight).toFixed(1)) : parseFloat((drug_options[theDrug].mgsvar * theWeight).toFixed(1));
+      return "<br><br><u>Prevention doses for exclusively breast-fed infants:</u><br><br>Normal birth weight: " + dose + " " + unit + " " + drug_options[theDrug].prophylaxisfrequency + "<br><br>Preterm or low birth weight: " + dose2 + " " + unit + " " + drug_options[theDrug].numberOfTimesADay ;  
+    }
+  } else {
+    return "";
+  }
 }
 
 
@@ -309,61 +324,67 @@ function calculateMlsTotal() {
   changeLink();
   let totalMls = parseFloat(getMlsValue() * getWeight());
   let highmodifier = drug_options[theDrug].highmodifier;
- let messageMls = "";
- let totalhighMls = parseFloat((totalMls * highmodifier).toFixed(1));
- let maximumMlsPerDay = "";
+  let messageMls = "";
+  let totalhighMls = parseFloat((totalMls * highmodifier).toFixed(1));
+  let maximumMlsPerDay = "";
   let loading = "";
   let strep = "";
- let highMls = "";
- let mls = " mLs";
- let totalhighsachets = (totalMls * 3).toFixed(1);
- let weight = getWeight();
- totalMls = totalMls || ""; // removes NaN messageMgs
+  let highMls = "";
+  let mls = " mLs";
+  let totalhighsachets = (totalMls * 3).toFixed(1);
+  let weight = getWeight();
+  let messageOther = "";
+  totalMls = totalMls || ""; // removes NaN messageMgs
 
- // set maximum doses
+  // set maximum doses
   totalMls = totalMls > drug_options[theDrug].mlsmax ? drug_options[theDrug].mlsmax : totalMls;
   totalhighMls = totalhighMls > drug_options[theDrug].mlsmaxhigh ? drug_options[theDrug].mlsmaxhigh : totalhighMls;
   totalhighsachets = totalhighsachets > drug_options[theDrug].sachetsmax ? drug_options[theDrug].sachetsmax : totalhighsachets;
 
 
- //check if there is a high range and then add the high range string
- if (drug_options[theDrug].highrange == true && totalMls < totalhighMls) {
- highMls = " - " + String(totalhighMls);
- }
+  //check if there is a high range and then add the high range string
+  if (drug_options[theDrug].highrange == true && totalMls < totalhighMls) {
+  highMls = " - " + String(totalhighMls);
+  }
 
- //check if there is a message and then add the message string
- if (drug_options[theDrug].messageshow == true) {
- messageMls = drug_options[theDrug].messageMls;
- }
+  //check if there is a message and then add the message string
+  if (drug_options[theDrug].messageshow == true) {
+  messageMls = drug_options[theDrug].messageMls;
+  }
 
- //work out the dosing for drugs with weight cut offs 
- if (drug_options[theDrug].weightrange == true) {
- if (weight < drug_options[theDrug].rangeWeightCutOff) {
- totalMls = drug_options[theDrug].range1doseMls;
- messageMls = drug_options[theDrug].messageMls;
- } else if (weight >= drug_options[theDrug].rangeWeightCutOff && weight < drug_options[theDrug].rangeWeightCutOff2) {
- totalMls = drug_options[theDrug].range2doseMls;
- messageMls = drug_options[theDrug].messageMls;
- } else {
- totalMls = "unexpected error";
- }
- }
+  //work out the dosing for drugs with weight cut offs 
+  if (drug_options[theDrug].weightrange == true) {
+    if (weight < drug_options[theDrug].rangeWeightCutOff) {
+    totalMls = drug_options[theDrug].range1doseMls;
+    messageMls = drug_options[theDrug].messageMls;
+    } else if (weight >= drug_options[theDrug].rangeWeightCutOff && weight < drug_options[theDrug].rangeWeightCutOff2) {
+    totalMls = drug_options[theDrug].range2doseMls;
+    messageMls = drug_options[theDrug].messageMls;
+    } else {
+    totalMls = "unexpected error";
+    }
+  }
 
- //set strings and display range for when there is a range for drugs with a weight cut off rather than a calculation
- if (theDrug == "Ibuprofen100" && weight < 7) {
- showWarning("Warning: calculator is for ages above 3 months<br> However, if under 3 months then use lower end of dose range and give a maximum of three times daily");
- }
- if (theDrug == "Ibuprofen100norange" && weight < 7|| theDrug == "Ibuprofen200norange" && weight < 7 ) {
- showWarning("Caution: For use in infants from age 3 months - contact your doctor");
- }
+  //set strings and display range for when there is a range for drugs with a weight cut off rather than a calculation
+  if (theDrug == "Ibuprofen100" && weight < 7) {
+  showWarning("Warning: calculator is for ages above 3 months<br> However, if under 3 months then use lower end of dose range and give a maximum of three times daily");
+  }
+  if (theDrug == "Ibuprofen100norange" && weight < 7|| theDrug == "Ibuprofen200norange" && weight < 7 ) {
+  showWarning("Caution: For use in infants from age 3 months - contact your doctor");
+  }
 
  
- if (theDrug == "Prednisolone") {
- let veryhighdosepred = parseFloat((weight * 0.4).toFixed(1));
- veryhighdosepred = veryhighdosepred >= 12 ? 12 : veryhighdosepred;
- messageMls = 
- "<br><br>If child has already been taking for more than a few days, give " + veryhighdosepred + "mL once daily (2mg/kg with a 60mg/12mL maximum)";
- }
+  if (theDrug == "Prednisolone") {
+  let veryhighdosepred = parseFloat((weight * 0.4).toFixed(1));
+  veryhighdosepred = veryhighdosepred >= 12 ? 12 : veryhighdosepred;
+  messageMls = 
+  "<br><br>If child has already been taking for more than a few days, give " + veryhighdosepred + "mL once daily (2mg/kg with a 60mg/12mL maximum)";
+  }
+
+
+  if (theDrug == "Ferrous_sulphate"){
+    messageOther = getIron("mLs");
+  }
 
  if (theDrug == "Macrogol") {
   mls = " sachets";
@@ -381,10 +402,12 @@ function calculateMlsTotal() {
  }
 
 
-//TODO set this to a variable in the drug object
- if (theDrug == "Ibuprofen100"){
- maximumMlsPerDay = "<br>(maximum " + parseFloat((totalhighMls * 3).toFixed(1)) + " mLs daily)";
-}
+    //TODO set this to a variable in the drug object
+    if (theDrug == "Ibuprofen100"){
+    maximumMlsPerDay = "<br>(maximum " + parseFloat((totalhighMls * 3).toFixed(1)) + " mLs daily)";
+    }
+
+
 
     if (getLoading("mls") != null) { loading = getLoading("mls"); }
   
@@ -410,7 +433,7 @@ function calculateMlsTotal() {
   
  if (drug_options[theDrug].tabletOnly == false) {
  
- displayMls(totalMls, highMls, mls, messageMls, loading, strep, maximumMlsPerDay);
+ displayMls(totalMls, highMls, mls, messageMls, loading, strep, maximumMlsPerDay, messageOther);
  } else {
    tabletOnly(theDrug);
  }
@@ -419,8 +442,7 @@ function calculateMlsTotal() {
 
 
 //display the result for Mls
-function displayMls(totalMls, highMls, mls, messageMls, loading, strep, maximumMlsPerDay) {
-
+function displayMls(totalMls, highMls, mls, messageMls, loading, strep, maximumMlsPerDay, messageOther) {
 
 strep = (showStrep == true) ? strep : "";
 
@@ -438,10 +460,10 @@ if (theIndication == "strep"){
 
 } else if (theIndication == "multi") {
  var result =  parseFloat(totalMls.toFixed(1)) +
- highMls +  mls +  frequency +  messageMls +   loading + maximumMlsPerDay + strep;
+ highMls +  mls +  frequency +  messageMls +   loading + maximumMlsPerDay + strep + messageOther;
 } else if (theIndication == "general"){
  var result =  parseFloat(totalMls.toFixed(1)) +
- highMls +  mls +  frequency +  messageMls +   loading + maximumMlsPerDay;
+ highMls +  mls +  frequency +  messageMls +   loading + maximumMlsPerDay + messageOther;
 }
 
  document.getElementById("Result").innerHTML = result;
@@ -466,6 +488,7 @@ function calculateMgsTotal() {
  let highMgs = "";
  let mgs = " mgs";
  let weight = getWeight();
+ let messageOther = "";
 
 
   // set maximum doses
@@ -516,6 +539,10 @@ function calculateMgsTotal() {
  messageMgs = 
  "<br><br>If child has already been taking for more than a few days, give " + veryhighdosepred + "mg once daily (2mg/kg with a 60mg maximum)";
  } 
+
+ if (theDrug == "Ferrous_sulphate"){
+  messageOther = getIron("mgs");
+}
  
  
  if (
@@ -552,11 +579,11 @@ function calculateMgsTotal() {
           drug_options[theDrug].numberOfTimesADayAlt;
     }
 
- displayMgs(totalMgs, highMgs, mgs, messageMgs, loading, strep, maximumMgsPerDay);
+ displayMgs(totalMgs, highMgs, mgs, messageMgs, loading, strep, maximumMgsPerDay, messageOther);
 }
 
 //show the mgs result
-function displayMgs(totalMgs, highMgs, mgs, messageMgs, loading, strep, maximumMgsPerDay) {
+function displayMgs(totalMgs, highMgs, mgs, messageMgs, loading, strep, maximumMgsPerDay, messageOther) {
  let frequency = getFrequency(); 
  strep = (showStrep == true) ? strep : "";
 
@@ -564,9 +591,9 @@ if (theIndication == "strep"){
  var result = strep;
  result = result.replace("<br><br>Strep A: ", "");
 } else if (theIndication == "multi") {
- var result =  totalMgs + highMgs + mgs + frequency + messageMgs + loading + maximumMgsPerDay + strep;
+ var result =  totalMgs + highMgs + mgs + frequency + messageMgs + loading + maximumMgsPerDay + strep + messageOther;
 } else if (theIndication == "general"){
- var result =  totalMgs + highMgs + mgs + frequency + messageMgs + loading + maximumMgsPerDay;
+ var result =  totalMgs + highMgs + mgs + frequency + messageMgs + loading + maximumMgsPerDay + messageOther;
 }
 
 

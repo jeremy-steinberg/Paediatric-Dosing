@@ -1,0 +1,173 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p, form, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply a background color */
+body {
+  background: #f3f4f6;
+  color: #333;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Wrap */
+#calculator {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title section */
+.title__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title__section__image img {
+  max-width: 50px;
+  margin-right: 10px;
+}
+
+.title__section-label {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Error messages */
+.error__section {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Weight section */
+.weight__section, .drug__section, .calculate__section, .result__section-mls, .result__section-mgs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.weight__section-label, .result__section-mls-label, .result__section-mgs-label {
+  font-weight: bold;
+}
+
+.weight__section-input {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Drug section */
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Calculate button */
+#calcbutton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#calcbutton:hover {
+  background-color: #0056b3;
+}
+
+/* Result section */
+.result__section-mls-item, .result__section-mgs-item {
+  flex-basis: 33%;
+}
+
+.clipboard.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Footer and author */
+.calculator__footer, .calculator__author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.calculator__footer-item img {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+
+/* Section separators */
+.drug_calc, .message__section-dosing, .calculator__footer, .calculator__author {
+  border-top: 2px solid #e0e0e0;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+
+.message__section-dosing {
+
+  padding: .5em .75em;
+  border-bottom: solid 1px #ccc;
+  line-height: 1.5rem;
+ font-size: 0.75rem;
+}
+
+.message__section-dosing-instructions{
+margin-left: 1rem;
+}
+
+span.age-group{
+    color: #A30552;
+    font-weight: bold;
+}
+
+
+/* Weight, Drug, and Calculate sections */
+.weight__section, .drug__section, .calculate__section {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+.weight__section, .drug__section {
+  background-color: #f9f9f9;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Result section */
+.result__section {
+  padding: 20px;
+  background-color: #e6f7ff;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer and Author */
+.calculator__footer, .calculator__author {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#ResultMgs, #Result {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1em;
+}

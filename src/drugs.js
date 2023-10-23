@@ -526,6 +526,9 @@ let drug_options = {
     mgsmaxhigh: 90,
     highrange: true,
     highmodifier: 2,
+    mlsvarprophylaxis: 0.33,
+    mgsvarprophylaxis: 2,
+    prophylaxisfrequency: "daily",
     messageshow: true,
     messageMls:
       "",
