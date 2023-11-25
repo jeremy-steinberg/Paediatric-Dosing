@@ -409,10 +409,10 @@ function calculateMlsTotal() {
 
 
 
-    if (getLoading("mls") != null) { loading = getLoading("mls"); }
+    if (getLoading("mLs") != null) { loading = getLoading("mLs"); }
   
-  if (getStrep("mls") != null) { 
-      strep = getStrep("mls"); 
+  if (getStrep("mLs") != null) { 
+      strep = getStrep("mLs"); 
     } 
   
   
