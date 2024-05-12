@@ -177,6 +177,36 @@ let drug_options = {
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 10 mg/kg (maximum 500 mg) three times daily </div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3052"
   },
+  Cefalexin125multi: {
+    tabletOnly: false,
+    mlsvar: 0.5,
+    mgsvar: 12.5,
+    numberOfTimesADay: " (12.5 or 25 mg/kg, see below for indication and frequency)",
+    mlsmax: 40,
+    mgsmax: 1000,
+    mlsmaxhigh: 40,
+    mgsmaxhigh: 1000,
+    highrange: true,
+    highmodifier: 2,
+    instructions:
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>Acute uncomplicated UTIs:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 25 mg/kg (maximum 500mg) THREE times daily for three days; or seven days in moderate to severe infection <span class='age-group'></div> <strong>Mild to moderate cellulitis:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 mg/kg (maximum 1 g) TWO to FOUR times daily for five days</div><strong>Impetigo with extensive or multiple lesions:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 - 25 mg/kg (maximum 1 g) TWICE daily</div></div>",
+    nzflink: "https://nzfchildren.org.nz/nzf_3058"
+  },
+  Cefalexin250multi: {
+    tabletOnly: false,
+    mlsvar: 0.25,
+    mgsvar: 12.5,
+    numberOfTimesADay: " (12.5 or 25 mg/kg, see below for indication and frequency)",
+    mlsmax: 20,
+    mgsmax: 1000,
+    mlsmaxhigh: 40,
+    mgsmaxhigh: 1000,
+    highrange: true,
+    highmodifier: 2,
+    instructions:
+    "<div class='message__section-dosing-item message__section-dosing-label'><strong>Acute uncomplicated UTIs:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 25 mg/kg (maximum 500mg) THREE times daily for three days; or seven days in moderate to severe infection <span class='age-group'></div> <strong>Mild to moderate cellulitis:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 mg/kg (maximum 1 g) TWO to FOUR times daily for five days</div><strong>Impetigo with extensive or multiple lesions:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 - 25 mg/kg (maximum 1 g) TWICE daily</div></div>",
+    nzflink: "https://nzfchildren.org.nz/nzf_3058"
+  },
   Cefalexin125: {
     tabletOnly: false,
     mlsvar: 0.5,
