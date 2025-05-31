@@ -90,7 +90,7 @@ let drug_options = {
     highrange: false,
     highmodifier: 2,
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>3 months - 18 years</span> 6 mg/kg per dose (maximum 400mg) every 8 hours as needed for pain or fever. Do not take more than 3 doses in 24 hours.</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>3 months - 18 years</span> 6 mg/kg per dose (maximum 400mg) every 6 to 8 hours as needed for pain or fever. Do not take more than 3 doses in 24 hours.</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_5524"
   },
   Ibuprofen200norange: {
@@ -105,7 +105,7 @@ let drug_options = {
     highrange: false,
     highmodifier: 2,
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>3 months - 18 years</span> 6 mg/kg per dose (maximum 400mg) every 8 hours as needed for pain or fever. Do not take more than 3 doses in 24 hours.</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>3 months - 18 years</span> 6 mg/kg per dose (maximum 400mg) every 6 to 8 hours as needed for pain or fever. Do not take more than 3 doses in 24 hours.</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_5524"
   },
   Amoxicillin125: {
@@ -215,7 +215,7 @@ let drug_options = {
     mlsmax: 40,
     mgsmax: 1000,
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5-25 mg/kg (usual maximum 500 mg; up to 1 g may be used), <strong>TWICE</strong> daily for superficial skin infections and <strong>FOUR</strong> times daily for infections due to sensitive Gram-positive and Gram-negative bacteria <br> <span class='age-group'> Note</span> High doses (25 mg/kg) are used in secondary care situations (e.g. step-down dosing from intravenous to oral therapy for bone and joint infections).</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5-25 mg/kg (usual maximum 500 mg; up to 1 g may be used), <strong>TWICE</strong> daily for impetigo and <strong>FOUR</strong> times daily for infections due to sensitive Gram-positive and Gram-negative bacteria <br> <span class='age-group'> Note</span> High doses (25 mg/kg) are used in secondary care situations (e.g. step-down dosing from intravenous to oral therapy for bone and joint infections).</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3058"
   },
   Cefalexin250: {
@@ -226,7 +226,7 @@ let drug_options = {
     mlsmax: 20,
     mgsmax: 1000,
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5-25 mg/kg (usual maximum 500 mg; up to 1 g may be used), <strong>TWICE</strong> daily for superficial skin infections and <strong>FOUR</strong> times daily for infections due to sensitive Gram-positive and Gram-negative bacteria <br> <span class='age-group'> Note</span> High doses (25 mg/kg) are used in secondary care situations (e.g. step-down dosing from intravenous to oral therapy for bone and joint infections).</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5-25 mg/kg (usual maximum 500 mg; up to 1 g may be used), <strong>TWICE</strong> daily for impetigo and <strong>FOUR</strong> times daily for infections due to sensitive Gram-positive and Gram-negative bacteria <br> <span class='age-group'> Note</span> High doses (25 mg/kg) are used in secondary care situations (e.g. step-down dosing from intravenous to oral therapy for bone and joint infections).</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3058"
   },
   "Coamoxiclav125-31.25": {
@@ -350,8 +350,8 @@ let drug_options = {
     strepweightcutoff: false,
     mlsvarstrep: 0.5,
     mgsvarstrep: 20,
-    mlsstrepmax: 25,
-    mgsstrepmax: 1000,
+    mlsstrepmax: 20,
+    mgsstrepmax: 800,
     strepfrequency: " twice daily for 10 days",
     messageMls: "<br>(Total daily dose may be given in two divided doses)",
     messageMgs: "<br>(Total daily dose may be given in two divided doses)",
@@ -380,8 +380,8 @@ let drug_options = {
     strepweightcutoff: false,
     mlsvarstrep: 0.25,
     mgsvarstrep: 20,
-    mlsstrepmax: 2.5,
-    mgsstrepmax: 1000,
+    mlsstrepmax: 10,
+    mgsstrepmax: 800,
     strepfrequency: " twice daily for 10 days",
     messageMls: "<br>(Total daily dose may be given in two divided doses)",
     messageMgs: "<br>(Total daily dose may be given in two divided doses)",
