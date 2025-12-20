@@ -134,8 +134,7 @@ let drug_options = {
     messageMls: "",
     messageMgs: "",
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Under 15kg</span> 50mg/kg once daily for 10 days<br> <span class='age-group'> 15 - 29.9kg</span> 750mg once daily for 10 days<br><span class='age-group'> 30kg or over</span> 1,000mg once daily for 10 days</div></div>",
-    nzflink: "https://nzfchildren.org.nz/nzf_3025"
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 50mg/kg once daily for 10 days (maximum 1,000mg/dose).</div></div>",    nzflink: "https://nzfchildren.org.nz/nzf_3025"
   },
   Amoxicillin250: {
     tabletOnly: false,
@@ -163,8 +162,7 @@ let drug_options = {
     messageMls: "",
     messageMgs: "",
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Under 15kg</span> 50mg/kg once daily for 10 days<br> <span class='age-group'> 15 - 29.9kg</span> 750mg once daily for 10 days<br><span class='age-group'> 30kg or over</span> 1,000mg once daily for 10 days</div></div>",
-    nzflink: "https://nzfchildren.org.nz/nzf_3025"
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 50mg/kg once daily for 10 days (maximum 1,000mg/dose).</div></div>",    nzflink: "https://nzfchildren.org.nz/nzf_3025"
   },
   Cefaclor125: {
     tabletOnly: false,
@@ -454,14 +452,10 @@ let drug_options = {
     tabletOnly: false,
     mlsvar: 0.25,
     mgsvar: 6.25,
-    mlsvarstreplow: 10,
-    mlsvarstrephigh: 20,
-    mlsvarstrep: 10,
-    mgsvarstrep: 500,
+    mlsvarstrep: 0.6, 
+    mgsvarstrep: 15,
     mlsstrepmax: 20,
     mgsstrepmax: 500,
-    mgsvarstreplow: 250,
-    mgsvarstrephigh: 500,
     numberOfTimesADay: " four times a day",
     mlsmax: 20,
     mgsmax: 500,
@@ -471,26 +465,23 @@ let drug_options = {
     highmodifier: 2,
     messageshow: true,
     strepdrug: true,
-    strepweightcutoff: true,
-    strepfrequency: " two to three times daily for ten days",
+    strepweightcutoff: false, // No longer using weight buckets
+    strepfrequency: " twice daily for 10 days", 
     messageMls: "",
     messageMgs: "",
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 6.25-12.5 mg/kg (maximum 250-500 mg) 4 times daily </div><strong>Strep A Dosing (First and Second Episodes):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Under 20kg</span> 250 mg 2-3 times daily for 10 days<br><span class='age-group'> Over 20kg</span> 500 mg 2-3 times daily for 10 days</div><strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 12.5 mg/kg (maximum 500 mg) 4 times daily for 10 days, in combination with <a href='https://nzfchildren.org.nz/nzf_3243' target='_blank'>rifampicin</a> at 20 mg/kg (maximum 600 mg) once daily for 4 days, beginning on day 7 of the phenoxymethylpenicillin or amoxicillin course (requires specialist approval)</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 6.25-12.5 mg/kg (maximum 250-500 mg) 4 times daily </div><strong>Strep A Dosing (First and Second Episodes):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 15 mg/kg twice daily for 10 days (maximum 500 mg / dose)</div><strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 12.5 mg/kg (maximum 500 mg) 4 times daily for 10 days, in combination with <a href='https://nzfchildren.org.nz/nzf_3243' target='_blank'>rifampicin</a> at 20 mg/kg (maximum 600 mg) once daily for 4 days, beginning on day 7 of the phenoxymethylpenicillin or amoxicillin course (requires specialist approval)</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3006"
   },
   Penicillin250: {
     tabletOnly: false,
     mlsvar: 0.125,
     mgsvar: 6.25,
-    mlsvarstreplow: 5,
-    mlsvarstrephigh: 10,
-    mlsvarstrep: 5,
-    mgsvarstrep: 500,
+    // Updated Strep variables for 15mg/kg calculation
+    mlsvarstrep: 0.3,
+    mgsvarstrep: 15,
     mlsstrepmax: 10,
     mgsstrepmax: 500,
-    mgsvarstreplow: 250,
-    mgsvarstrephigh: 500,
     numberOfTimesADay: " four times a day",
     mlsmax: 10,
     mgsmax: 500,
@@ -500,11 +491,12 @@ let drug_options = {
     highmodifier: 2,
     messageshow: true,
     strepdrug: true,
-    strepfrequency: " two to three times daily for ten days",
+    strepweightcutoff: false, // No longer using weight buckets
+    strepfrequency: " twice daily for 10 days",
     messageMls: "",
     messageMgs: "",
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 6.25-12.5 mg/kg (maximum 250-500 mg) 4 times daily </div><strong>Strep A Dosing (First and Second Episodes):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Under 20kg</span> 250 mg 2-3 times daily for 10 days<br><span class='age-group'> Over 20kg</span> 500 mg 2-3 times daily for 10 days</div><strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 12.5 mg/kg (maximum 500 mg) 4 times daily for 10 days, in combination with <a href='https://nzfchildren.org.nz/nzf_3243' target='_blank'>rifampicin</a> at 20 mg/kg (maximum 600 mg) once daily for 4 days, beginning on day 7 of the phenoxymethylpenicillin or amoxicillin course (requires specialist approval)</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 6.25-12.5 mg/kg (maximum 250-500 mg) 4 times daily </div><strong>Strep A Dosing (First and Second Episodes):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 15 mg/kg twice daily for 10 days (maximum 500 mg / dose)</div><strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 12.5 mg/kg (maximum 500 mg) 4 times daily for 10 days, in combination with <a href='https://nzfchildren.org.nz/nzf_3243' target='_blank'>rifampicin</a> at 20 mg/kg (maximum 600 mg) once daily for 4 days, beginning on day 7 of the phenoxymethylpenicillin or amoxicillin course (requires specialist approval)</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3006"
   },
   Prednisolone: {

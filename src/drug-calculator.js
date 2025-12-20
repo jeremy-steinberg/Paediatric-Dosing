@@ -146,17 +146,18 @@ function getStrep(unit){
     let weight = getWeight();
     if (drug_options[theDrug].strepdrug == true){
     if (theDrug == "Amoxicillin125" || theDrug == "Amoxicillin250"){
-      if (weight < 15){
-        let dose = unit == "mLs" ? drug_options[theDrug].mlsvarstrep : drug_options[theDrug].mgsvarstrep;
-        return "<br><br>Strep A: " + parseFloat((dose * weight).toFixed(1)) + " " + unit + drug_options[theDrug].strepfrequency;             
-      } else if (weight >= 15 && weight < 30){
-        let dose = unit == "mLs" ? drug_options[theDrug].mlsvarstreplow : drug_options[theDrug].mgsvarstreplow;
-        return "<br><br>Strep A: " + dose + " " + unit + drug_options[theDrug].strepfrequency;        
-      } else if (weight >= 30){
-        let dose = unit == "mLs" ? drug_options[theDrug].mlsvarstrephigh : drug_options[theDrug].mgsvarstrephigh;
-        return "<br><br>Strep A:  " +  dose + " " + unit + drug_options[theDrug].strepfrequency;      
+    // Calculate 50mg/kg (or mL equivalent)
+      let doseVar = unit == "mLs" ? drug_options[theDrug].mlsvarstrep : drug_options[theDrug].mgsvarstrep;
+      let calculatedDose = parseFloat((doseVar * weight).toFixed(1));
+
+      // Get the maximum (1000mg or mL equivalent)
+      let maxDose = unit == "mLs" ? drug_options[theDrug].mlsstrepmax : drug_options[theDrug].mgsstrepmax;
+
+      // Cap the dose at the maximum
+      if (calculatedDose > maxDose) {
+          calculatedDose = maxDose;
       }
-      
+      return "<br><br>Strep A: " + calculatedDose + " " + unit + drug_options[theDrug].strepfrequency;
     } else if (theDrug == "Coamoxiclav125-31.25" || theDrug == "Coamoxiclav250-62.5") {
       
       let dose = unit == "mLs" ? drug_options[theDrug].mlsvarstrep : drug_options[theDrug].mgsvarstrep;
@@ -171,13 +172,16 @@ function getStrep(unit){
 
      
     } else if (theDrug == "Penicillin125" || theDrug == "Penicillin250"){
-      if (weight < 20){
-        let dose = unit == "mLs" ? drug_options[theDrug].mlsvarstreplow : drug_options[theDrug].mgsvarstreplow;
-        return "<br><br>Strep A: " + dose + " " + unit + drug_options[theDrug].strepfrequency;  
-      } else if (weight >= 20){
-        let dose = unit == "mLs" ? drug_options[theDrug].mlsvarstrephigh : drug_options[theDrug].mgsvarstrephigh;
-        return "<br><br>Strep A: " + dose + " " + unit + drug_options[theDrug].strepfrequency;  
-      }  
+      let doseVar = unit == "mLs" ? drug_options[theDrug].mlsvarstrep : drug_options[theDrug].mgsvarstrep;
+      let calculatedDose = parseFloat((doseVar * weight).toFixed(1));
+
+      let maxDose = unit == "mLs" ? drug_options[theDrug].mlsstrepmax : drug_options[theDrug].mgsstrepmax;
+      
+      if (calculatedDose > maxDose) {
+          calculatedDose = maxDose;
+      }
+      return "<br><br>Strep A: " + calculatedDose + " " + unit + drug_options[theDrug].strepfrequency;
+      
     } else if (theDrug == "Roxithromycin"){
       if (weight < 40){
         if (unit == "mLs"){ return null;} else if (unit == "mgs"){
