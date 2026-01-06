@@ -1,4 +1,4 @@
-let drug_options = {
+export const drug_options = {
   Paracetamol120: {
     tabletOnly: false,
     mlsvar: 0.625,
@@ -112,57 +112,39 @@ let drug_options = {
     tabletOnly: false,
     mlsvar: 0.6,
     mgsvar: 15,
-    mlsvarstreplow: 30,
-    mlsvarstrephigh: 40,
-    mlsvarstrep: 2,
-    mgsvarstrep: 50,
-    mlsstrepmax: 40,
-    mgsstrepmax: 1000,
-    mgsvarstreplow: 750,
-    mgsvarstrephigh: 1000,
-    strepfrequency: " once daily for 10 days",
     numberOfTimesADay: " three times a day",
     mlsmax: 40,
     mgsmax: 1000,
-    mlsmaxhigh: 40,
-    mgsmaxhigh: 1000,
     highrange: true,
     highmodifier: 2,
+    indications: [
+      { label: "General (15-30mg/kg)", mgs: 15, mls: 0.6, freq: " three times a day", mgsmax: 1000, mlsmax: 40, highrange: true },
+      { label: "Strep A (50mg/kg)", mgs: 50, mls: 2, freq: " once daily for 10 days", mgsmax: 1000, mlsmax: 40, highrange: false }
+    ],
     messageshow: true,
     strepdrug: true,
-    strepweightcutoff: true,
-    messageMls: "",
-    messageMgs: "",
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 50mg/kg once daily for 10 days (maximum 1,000mg/dose).</div></div>",    nzflink: "https://nzfchildren.org.nz/nzf_3025"
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 50mg/kg once daily for 10 days (maximum 1,000mg/dose).</div></div>",
+    nzflink: "https://nzfchildren.org.nz/nzf_3025"
   },
   Amoxicillin250: {
     tabletOnly: false,
     mlsvar: 0.3,
     mgsvar: 15,
-    mlsvarstreplow: 15,
-    mlsvarstrephigh: 20,
-    mlsvarstrep: 1,
-    mgsvarstrep: 50,
-    mlsstrepmax: 20,
-    mgsstrepmax: 1000,
-    mgsvarstreplow: 750,
-    mgsvarstrephigh: 1000,
-    strepfrequency: " once daily for 10 days",
     numberOfTimesADay: " three times a day",
     mlsmax: 20,
     mgsmax: 1000,
-    mlsmaxhigh: 20,
-    mgsmaxhigh: 1000,
     highrange: true,
     highmodifier: 2,
+    indications: [
+      { label: "General (15-30mg/kg)", mgs: 15, mls: 0.3, freq: " three times a day", mgsmax: 1000, mlsmax: 20, highrange: true },
+      { label: "Strep A (50mg/kg)", mgs: 50, mls: 1, freq: " once daily for 10 days", mgsmax: 1000, mlsmax: 20, highrange: false }
+    ],
     messageshow: true,
     strepdrug: true,
-    strepweightcutoff: true,
-    messageMls: "",
-    messageMgs: "",
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 50mg/kg once daily for 10 days (maximum 1,000mg/dose).</div></div>",    nzflink: "https://nzfchildren.org.nz/nzf_3025"
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15 - 30mg/kg (maximum 1,000mg) three times daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 50mg/kg once daily for 10 days (maximum 1,000mg/dose).</div></div>",
+    nzflink: "https://nzfchildren.org.nz/nzf_3025"
   },
   Cefaclor125: {
     tabletOnly: false,
@@ -179,37 +161,65 @@ let drug_options = {
     tabletOnly: false,
     mlsvar: 0.5,
     mgsvar: 12.5,
-    numberOfTimesADay: " (12.5 or 25 mg/kg, see below for indication and frequency)",
+    indications: [
+      { 
+        label: "General Dosing (12.5mg/kg)", 
+        mgs: 12.5, 
+        mls: 0.5, 
+        freq: " twice <b>OR</b> four times a day", 
+        mgsmax: 1000, 
+        mlsmax: 40 
+      },
+      { 
+        label: "UTI (25mg/kg)", 
+        mgs: 25, 
+        mls: 1.0, 
+        freq: " three times a day", 
+        mgsmax: 500, 
+        mlsmax: 20 
+      }
+    ],
+    numberOfTimesADay: " twice <b>OR</b> four times a day", // Default fallback
     mlsmax: 40,
     mgsmax: 1000,
-    mlsmaxhigh: 40,
-    mgsmaxhigh: 1000,
-    highrange: true,
-    highmodifier: 2,
     instructions:
-      "<div class='message__section-dosing-item message__section-dosing-label'><strong>Acute uncomplicated UTIs:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 25 mg/kg (maximum 500mg) THREE times daily for three days; or seven days in moderate to severe infection <span class='age-group'></div> <strong>Mild to moderate cellulitis:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 mg/kg (maximum 1 g) TWO to FOUR times daily for five days</div><strong>Impetigo with extensive or multiple lesions:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 - 25 mg/kg (maximum 1 g) TWICE daily</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5–25 mg/kg (usual maximum 500 mg; up to 1 g may be used), <b>TWICE</b> daily for impetigo and <b>FOUR</b> times daily for infections due to sensitive Gram-positive and Gram-negative bacteria. <br> <span class='age-group'> Note</span> High doses (25 mg/kg) are used in secondary care situations (e.g. step-down dosing for bone/joint infections).</div> <strong>UTI Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 25 mg/kg (maximum 500mg) <b>THREE</b> times daily.</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3058"
   },
   Cefalexin250multi: {
     tabletOnly: false,
     mlsvar: 0.25,
     mgsvar: 12.5,
-    numberOfTimesADay: " (12.5 or 25 mg/kg, see below for indication and frequency)",
+    indications: [
+      { 
+        label: "General Dosing (12.5mg/kg)", 
+        mgs: 12.5, 
+        mls: 0.25, 
+        freq: " twice <b>OR</b> four times a day", 
+        mgsmax: 1000, 
+        mlsmax: 20 
+      },
+      { 
+        label: "UTI (25mg/kg)", 
+        mgs: 25, 
+        mls: 0.5, 
+        freq: " three times a day", 
+        mgsmax: 500, 
+        mlsmax: 10 
+      }
+    ],
+    numberOfTimesADay: " twice <b>OR</b> four times a day", // Default fallback
     mlsmax: 20,
     mgsmax: 1000,
-    mlsmaxhigh: 40,
-    mgsmaxhigh: 1000,
-    highrange: true,
-    highmodifier: 2,
     instructions:
-    "<div class='message__section-dosing-item message__section-dosing-label'><strong>Acute uncomplicated UTIs:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 25 mg/kg (maximum 500mg) THREE times daily for three days; or seven days in moderate to severe infection <span class='age-group'></div> <strong>Mild to moderate cellulitis:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 mg/kg (maximum 1 g) TWO to FOUR times daily for five days</div><strong>Impetigo with extensive or multiple lesions:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5 - 25 mg/kg (maximum 1 g) TWICE daily</div></div>",
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 12.5–25 mg/kg (usual maximum 500 mg; up to 1 g may be used), <b>TWICE</b> daily for impetigo and <b>FOUR</b> times daily for infections due to sensitive Gram-positive and Gram-negative bacteria. <br> <span class='age-group'> Note</span> High doses (25 mg/kg) are used in secondary care situations (e.g. step-down dosing for bone/joint infections).</div> <strong>UTI Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 25 mg/kg (maximum 500mg) <b>THREE</b> times daily.</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3058"
   },
   Cefalexin125: {
     tabletOnly: false,
     mlsvar: 0.5,
     mgsvar: 12.5,
-    numberOfTimesADay: " twice <b>OR</b> four times a day",
+    numberOfTimesADay: "111 twice <b>OR</b> four times a day",
     mlsmax: 40,
     mgsmax: 1000,
     instructions:
@@ -220,7 +230,7 @@ let drug_options = {
     tabletOnly: false,
     mlsvar: 0.25,
     mgsvar: 12.5,
-    numberOfTimesADay: " twice <b>OR</b> four times a day",
+    numberOfTimesADay: "111 twice <b>OR</b> four times a day",
     mlsmax: 20,
     mgsmax: 1000,
     instructions:
@@ -234,21 +244,18 @@ let drug_options = {
     numberOfTimesADay: " three times a day",
     mlsmax: 20,
     mgsmax: 625,
-    mlsmaxhigh: 20,
-    mgsmaxhigh: 625,
     highrange: true,
     highmodifier: 2,
+    indications: [
+      { label: "General (15-30mg/kg total)", mgs: 15, mls: 0.48, freq: " three times a day", mgsmax: 625, mlsmax: 20, highrange: true },
+      { label: "Strep A (16.7mg/kg total)", mgs: 16.7, mls: 0.533, freq: " three times daily for 10 days", mgsmax: 833, mlsmax: 26.65, highrange: false }
+    ],
     strepdrug: true,
-    strepweightcutoff: false,
-    mlsvarstrep: 0.533,
-    mgsvarstrep: 16.7,
-    mlsstrepmax: 26.65,
-    mgsstrepmax: 833,
-    strepfrequency: " three times daily for 10 days",
     instructions:
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15-30 mg/kg (maximum 625 mg) 3 times daily <br> <span class='age-group'> Note</span> Oral doses are expressed as the total dose of amoxicillin + clavulanic acid (ratio 4:1); 15-30 mg of the total (amoxicillin + clavulanic acid) contains 12-24 mg of amoxicillin. </div> <strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span>  16.7 mg/kg (maximum dose 833 mg) 3 times daily for 10 days (50 mg/kg daily, maximum 2.5 g daily)</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3032"
   },
+
   "Coamoxiclav250-62.5": {
     tabletOnly: false,
     mlsvar: 0.24,
@@ -256,17 +263,13 @@ let drug_options = {
     numberOfTimesADay: " three times a day",
     mlsmax: 10,
     mgsmax: 625,
-    mlsmaxhigh: 10,
-    mgsmaxhigh: 625,
     highrange: true,
     highmodifier: 2,
+    indications: [
+      { label: "General (15-30mg/kg total)", mgs: 15, mls: 0.24, freq: " three times a day", mgsmax: 625, mlsmax: 10, highrange: true },
+      { label: "Strep A (16.7mg/kg total)", mgs: 16.7, mls: 0.2665, freq: " three times daily for 10 days", mgsmax: 833, mlsmax: 13.32, highrange: false }
+    ],
     strepdrug: true,
-    strepweightcutoff: false,
-    mlsvarstrep: 0.2665,
-    mgsvarstrep: 16.7,
-    mlsstrepmax: 13.32,
-    mgsstrepmax: 833,
-    strepfrequency: " three times daily for 10 days",
     instructions:
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br><div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 15-30 mg/kg (maximum 625 mg) 3 times daily <br> <span class='age-group'> Note</span> Oral doses are expressed as the total dose of amoxicillin + clavulanic acid (ratio 4:1); 15-30 mg of the total (amoxicillin + clavulanic acid) contains 12-24 mg of amoxicillin. </div> <strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span>  16.7 mg/kg (maximum dose 833 mg) 3 times daily for 10 days (50 mg/kg daily, maximum 2.5 g daily)</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3032"
@@ -330,59 +333,44 @@ let drug_options = {
   Erythromycin200: {
     tabletOnly: false,
     mlsvar: 0.25,
-    mlsvaralt: 0.5,
     mgsvar: 10,
-    mgsvaralt: 20,
     numberOfTimesADay: " four times a day",
-    numberOfTimesADayAlt: " twice a day",
     mlsmax: 10,
-    mlsmaxalt: 20,
     mgsmax: 400,
-    mgsmaxalt: 800,
-    messageshow: true,
-    mlsmaxhigh: 10,
-    mgsmaxhigh: 400,
     highrange: true,
     highmodifier: 1.25,
+    indications: [
+      { label: "General (10-12.5mg/kg)", mgs: 10, mls: 0.25, freq: " four times a day", mgsmax: 400, mlsmax: 10, highrange: true },
+      { label: "Strep A (20mg/kg)", mgs: 20, mls: 0.5, freq: " twice daily for 10 days", mgsmax: 800, mlsmax: 20, highrange: false }
+    ],
+    messageshow: true,
     strepdrug: true,
-    strepweightcutoff: false,
-    mlsvarstrep: 0.5,
-    mgsvarstrep: 20,
-    mlsstrepmax: 20,
-    mgsstrepmax: 800,
-    strepfrequency: " twice daily for 10 days",
-    messageMls: "<br>(Total daily dose may be given in two divided doses)",
-    messageMgs: "<br>(Total daily dose may be given in two divided doses)",
+    messageMls: "",
+    messageMgs: "",
+    alternativeFreq: "twice daily",
     instructions:
       "<div class='message__section-dosing-instructions'><span class='age-group'> Note</span> Erythromycin has two forms: erythromycin ethylsuccinate, and erythromycin stearate. This calculator uses the former, and this should be specified on the prescription</div> <div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 10-12.5 mg/kg every 6 hours (usual maximum 1.6 g daily; maximum 4 g daily in severe infection)</div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 20 mg/kg twice daily; maximum 800 mg twice daily for 10 days</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3154"
   },
+
   Erythromycin400: {
     tabletOnly: false,
     mlsvar: 0.125,
-    mlsvaralt: 0.25,
     mgsvar: 10,
-    mgsvaralt: 20,
     numberOfTimesADay: " four times a day",
-    numberOfTimesADayAlt: " twice a day",
     mlsmax: 5,
-    mlsmaxalt: 10,
     mgsmax: 400,
-    mgsmaxalt: 800,
-    mlsmaxhigh: 5,
-    mgsmaxhigh: 400,
     highrange: true,
     highmodifier: 1.25,
+    indications: [
+      { label: "General (10-12.5mg/kg)", mgs: 10, mls: 0.125, freq: " four times a day", mgsmax: 400, mlsmax: 5, highrange: true },
+      { label: "Strep A (20mg/kg)", mgs: 20, mls: 0.25, freq: " twice daily for 10 days", mgsmax: 800, mlsmax: 10, highrange: false }
+    ],
     messageshow: true,
     strepdrug: true,
-    strepweightcutoff: false,
-    mlsvarstrep: 0.25,
-    mgsvarstrep: 20,
-    mlsstrepmax: 10,
-    mgsstrepmax: 800,
-    strepfrequency: " twice daily for 10 days",
-    messageMls: "<br>(Total daily dose may be given in two divided doses)",
-    messageMgs: "<br>(Total daily dose may be given in two divided doses)",
+    messageMls: "",
+    messageMgs: "",
+    alternativeFreq: "twice daily",
     instructions:
       "<div class='message__section-dosing-instructions'><span class='age-group'> Note</span> Erythromycin has two forms: erythromycin ethylsuccinate, and erythromycin stearate. This calculator uses the former, and this should be specified on the prescription</div> <div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 10-12.5 mg/kg every 6 hours (usual maximum 1.6 g daily; maximum 4 g daily in severe infection)</div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>Child</span> 20 mg/kg twice daily; maximum 800 mg twice daily for 10 days</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3154"
@@ -422,7 +410,7 @@ let drug_options = {
   },
   Loratadine: {
     tabletOnly: false,
-    numberOfTimesADay: " once a day",
+    numberOfTimesADay: " once daily",
     weightrange: true,
     rangeWeightCutOff: 30,
     rangeWeightCutOff2: 9999,
@@ -448,53 +436,53 @@ let drug_options = {
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>12 - 18 years</span> 1 sachet once daily, increase to 2-3 sachets daily if required; contents of each sachet dissolved in half a glass (approximately 125 mL) of water<br><span class='age-group'>2 - 18 years</span> The NZF only provides dosing advise for the unfunded Lax-Sachets Half for this age group. Therefore this calculator uses 1.5g/kg for disimpaction (<a href='https://www.starship.org.nz/for-health-professionals/starship-clinical-guidelines/c/constipation/' target='_blank'>starship</a> advises 1-1.5g/kg), and a maintenance dose of 0.5g/kg </div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_897"
   },
+  Malarone: {
+    tabletOnly: true,
+    tabletSize: "Atovaquone/Proguanil",
+    numberOfTimesADay: " once daily",
+    weightrange: true, // Used to trigger bucket-based dosing
+    rangeWeightCutOff: 21,
+    rangeWeightCutOff2: 31,
+    rangeWeightCutOff3: 40, // New property for 3rd weight tier
+    instructions:
+      "<div class='message__section-dosing-item message__section-dosing-label'><strong>Malaria Prophylaxis:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>11–21 kg</span> 1 Malarone Junior tablet once daily<br><span class='age-group'>21–31 kg</span> 2 Malarone Junior tablets once daily<br><span class='age-group'>31–40 kg</span> 3 Malarone Junior tablets once daily<br><span class='age-group'>Over 40 kg</span> 1 Malarone Adult tablet once daily<br> <span class='age-group'> Note</span> Start 1–2 days before entering endemic area; continue for 7 days after leaving.</div></div>",
+    nzflink: "https://nzfchildren.org.nz/nzf_3549"
+  },
   Penicillin125: {
     tabletOnly: false,
     mlsvar: 0.25,
     mgsvar: 6.25,
-    mlsvarstrep: 0.6, 
-    mgsvarstrep: 15,
-    mlsstrepmax: 20,
-    mgsstrepmax: 500,
     numberOfTimesADay: " four times a day",
     mlsmax: 20,
     mgsmax: 500,
-    mlsmaxhigh: 20,
-    mgsmaxhigh: 500,
     highrange: true,
     highmodifier: 2,
+    indications: [
+      { label: "General (6.25-12.5mg/kg)", mgs: 6.25, mls: 0.25, freq: " four times a day", mgsmax: 500, mlsmax: 20, highrange: true },
+      { label: "Strep A (15mg/kg)", mgs: 15, mls: 0.6, freq: " twice daily for 10 days", mgsmax: 500, mlsmax: 20, highrange: false }
+    ],
     messageshow: true,
     strepdrug: true,
-    strepweightcutoff: false, // No longer using weight buckets
-    strepfrequency: " twice daily for 10 days", 
-    messageMls: "",
-    messageMgs: "",
     instructions:
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 6.25-12.5 mg/kg (maximum 250-500 mg) 4 times daily </div><strong>Strep A Dosing (First and Second Episodes):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 15 mg/kg twice daily for 10 days (maximum 500 mg / dose)</div><strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 12.5 mg/kg (maximum 500 mg) 4 times daily for 10 days, in combination with <a href='https://nzfchildren.org.nz/nzf_3243' target='_blank'>rifampicin</a> at 20 mg/kg (maximum 600 mg) once daily for 4 days, beginning on day 7 of the phenoxymethylpenicillin or amoxicillin course (requires specialist approval)</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3006"
   },
+
   Penicillin250: {
     tabletOnly: false,
     mlsvar: 0.125,
     mgsvar: 6.25,
-    // Updated Strep variables for 15mg/kg calculation
-    mlsvarstrep: 0.3,
-    mgsvarstrep: 15,
-    mlsstrepmax: 10,
-    mgsstrepmax: 500,
     numberOfTimesADay: " four times a day",
     mlsmax: 10,
     mgsmax: 500,
-    mlsmaxhigh: 10,
-    mgsmaxhigh: 500,
     highrange: true,
     highmodifier: 2,
+    indications: [
+      { label: "General (6.25-12.5mg/kg)", mgs: 6.25, mls: 0.125, freq: " four times a day", mgsmax: 500, mlsmax: 10, highrange: true },
+      { label: "Strep A (15mg/kg)", mgs: 15, mls: 0.3, freq: " twice daily for 10 days", mgsmax: 500, mlsmax: 10, highrange: false }
+    ],
     messageshow: true,
     strepdrug: true,
-    strepweightcutoff: false, // No longer using weight buckets
-    strepfrequency: " twice daily for 10 days",
-    messageMls: "",
-    messageMgs: "",
     instructions:
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>1 month - 18 years</span> 6.25-12.5 mg/kg (maximum 250-500 mg) 4 times daily </div><strong>Strep A Dosing (First and Second Episodes):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 15 mg/kg twice daily for 10 days (maximum 500 mg / dose)</div><strong>Strep A Dosing (Third or More Episode within 3 months):</strong> <div class='message__section-dosing-instructions'><span class='age-group'> Child</span> 12.5 mg/kg (maximum 500 mg) 4 times daily for 10 days, in combination with <a href='https://nzfchildren.org.nz/nzf_3243' target='_blank'>rifampicin</a> at 20 mg/kg (maximum 600 mg) once daily for 4 days, beginning on day 7 of the phenoxymethylpenicillin or amoxicillin course (requires specialist approval)</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3006"
@@ -525,14 +513,13 @@ let drug_options = {
     mgsvar: 2.5,
     numberOfTimesADay: " twice daily",
     mgsmax: 150,
-    mgsmaxhigh: 150,
     highrange: true,
-    strepdrug: true,
-    mgsvarstrephigh: 150,
     highmodifier: 1.6,
-    messageMls: "",
-    messageMgs: "",
-    strepfrequency: " twice daily for 10 days",
+    indications: [
+      { label: "General (2.5-4mg/kg)", mgs: 2.5, mls: 0, freq: " twice daily", mgsmax: 150, mlsmax: 0, highrange: true },
+      { label: "Strep A (2.5mg/kg)", mgs: 2.5, mls: 0, freq: " twice daily for 10 days", mgsmax: 150, mlsmax: 0, highrange: false }
+    ],
+    strepdrug: true,
     instructions:
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>under 40 kg</span> 2.5-4 mg/kg (maximum 150 mg) twice daily <br><span class='age-group'>over 40 kg</span> 150 mg twice daily </div> <strong>Strep A Dosing:</strong> <div class='message__section-dosing-instructions'><span class='age-group'>under 40 kg</span> 2.5 mg/kg twice daily for 10 days<br> <span class='age-group'> over 40 kg </span> 150 mg twice daily for 10 days<br></div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_3161"
@@ -560,5 +547,4 @@ let drug_options = {
       "<div class='message__section-dosing-item message__section-dosing-label'><strong>General Dosing:</strong> <br> <div class='message__section-dosing-instructions'><span class='age-group'>Child 1 month - 12 years</span> 0.5-1 mL/kg daily up to maximum 30 mL daily in 2-3 divided doses <br><span class='age-group'>Child 12 - 18 years</span> 15-30 mL daily in 1-2 divided doses</div></div>",
     nzflink: "https://nzfchildren.org.nz/nzf_4915"
   }
-
 };

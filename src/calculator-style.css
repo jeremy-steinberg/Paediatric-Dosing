@@ -343,3 +343,9 @@ margin-left: 5px;
   height: 40px;
 }
 
+#indication-radios {
+margin-bottom: 0.75rem;
+  flex-direction: column;
+  display: flex;
+  gap: 1rem;
+}
